@@ -1,4 +1,41 @@
+:root {
+    /* typography */
+    --font-mono: ui-monospace, "Courier New", monospace;
+    --font-sans: system-ui, Helvetica, "Apple Color Emoji", "Segeo UI Emoji";
+
+    /* background color */
+    --background: #121417;
+    --foregroung: #dde3ef;
+    --accent: #182c8a;
+
+    /* overlays */
+    --panel-background: rgba(11, 13, 18, 0.55);
+    --panel-boarder: rgba(28, 40, 63, 0.12);
+
+    /* layout */
+    --text-max-width: 68rem;
+    --nav-rem: 4rem;
+    --x-margin: clamp(1rem, 4vw, 3rem);
+    --y-margin: clamp(2rem, 8vh, 6rem);
+
+    /* ASCII field - background animation reference */
+    --cell-size: 14px;
+    --opacity: 0.85;
+    --blank-margins: 200px; /* buffer space around revealed page content */
+
+    /* animated page motion */
+    --transition-fast: 180ms;
+    --transition-standard: 420ms;
+    --transition-slow: 840ms;
+    --easing-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+    --easing-emphasis: cubic-bezier(0.1, 0.9, 0.2, 1);
+
+    /* element effects */
+    --radius: 18px;
+    --shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
 body {
-    font-family: Helvetica, sans-serif;
+    font-family: 'Courier New', monospace;
     background-color: #1d2129;
 }
