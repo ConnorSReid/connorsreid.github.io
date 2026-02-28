@@ -45,6 +45,25 @@ body {
     font-family: var(--font-sans);
     line-height: 1.5;
     text-rendering: optimizeLegibility;
-    
+
     overflow-x: hidden;
+}
+/*
+.app {
+    position: relative;
+    isolation: isolate;
+}
+
+.ascii-layer {
+    position: fixed;
+    z-index: 0;
+}
+
+.content-layer {
+    position: relative;
+    z-index: 1;
+}*/
+header {
+    text-align: center;
+    font-size: 50px;
 }
