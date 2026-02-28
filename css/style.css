@@ -3,10 +3,18 @@
     --font-mono: ui-monospace, "Courier New", monospace;
     --font-sans: system-ui, Helvetica, "Apple Color Emoji", "Segeo UI Emoji";
 
-    /* background color */
-    --background: #121417;
+    /* page colors */
+    --background: #0f1113;
     --foregroung: #dde3ef;
     --accent: #182c8a;
+
+    /* page layout */
+    --page-margins: clamp(12px, 3vw, 28px);
+    --block-margins: clamp(10px, 2vw, 18px);
+
+    --header-height: 84px;
+    --nav-height: 56px;
+    --footer-height: 24px;
 
     /* overlays */
     --panel-background: rgba(11, 13, 18, 0.55);
