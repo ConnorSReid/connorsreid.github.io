@@ -3,6 +3,10 @@
     --font-mono: ui-monospace, "Courier New", monospace;
     --font-sans: system-ui, Helvetica, "Apple Color Emoji", "Segeo UI Emoji";
 
+    --font-size-base: 36px;
+
+    --line-height: 12px;
+
     /* page colors */
     --background: #0f1113;
     --foregroung: #dde3ef;
@@ -12,13 +16,19 @@
     --page-margins: clamp(12px, 3vw, 28px);
     --block-margins: clamp(10px, 2vw, 18px);
 
-    --header-height: 84px;
-    --nav-height: 56px;
-    --footer-height: 24px;
+    --header-min-height: 84px;
+    --nav-min-height: 56px;
+    --footer-min-height: 24px;
 
     /* overlays */
-    --panel-background: rgba(11, 13, 18, 0.55);
+    --panel-background: rgba(11, 13, 18, 0.8);
     --panel-boarder: rgba(28, 40, 63, 0.12);
+
+    --panel-padding: clamp(12px 2.5vw 24px);
+    --panel-thickness: 3px;
+    --panel-corner: 28px;
+
+    --panel-content-max: 1100px;
 
     /* layout */
     --text-max-width: 68rem;
@@ -43,9 +53,19 @@
     --shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
 body {
     margin: 0;
-    min-height: 100vh;
 
     background: var(--background);
     color: var(--foregroung);
@@ -55,6 +75,48 @@ body {
     text-rendering: optimizeLegibility;
 
     overflow-x: hidden;
+}
+
+.home-page {
+    height: 100svh;
+    display: grid;
+
+    grid-template-rows: 
+        minmax(var(--header-min-height), auto)
+        minmax(var(--nav-min-height), auto)
+        1fr
+        minmax(var(--footer-min-height), auto);
+    
+    gap: var(--blank-margins);
+    padding: var(--page-margins);
+}
+
+.blocks-inner {
+    max-width: var(--panel-content-max);
+    margin: 0 auto;
+}
+
+.main-inner {
+    height: 100%
+}
+
+.frame {
+    background: 
+        linear-gradient(var(--panel-background), var(--panel-background)) left top / var(--panel-thickness) var(--panel-corner) no-repeat,
+        linear-gradient(var(--panel-background), var(--panel-background)) left top / var(--panel-corner) var(--panel-thickness) no-repeat,
+
+        linear-gradient(var(--panel-background), var(--panel-background)) right top / var(--panel-thickness) var(--panel-corner) no-repeat,
+        linear-gradient(var(--panel-background), var(--panel-background)) right top / var(--panel-corner) var(--panel-thickness) no-repeat,
+
+        linear-gradient(var(--panel-background), var(--panel-background)) left bottom / var(--panel-thickness) var(--panel-corner) no-repeat,
+        linear-gradient(var(--panel-background), var(--panel-background)) left bottom / var(--panel-corner) var(--panel-thickness) no-repeat,
+
+        linear-gradient(var(--panel-background), var(--panel-background)) right bottom / var(--panel-thickness) var(--panel-corner) no-repeat,
+        linear-gradient(var(--panel-background), var(--panel-background)) right bottom / var(--panel-corner) var(--panel-thickness) no-repeat,
+
+        linear-gradient(var(--background), var(--background));
+
+    padding: var(--panel-padding);
 }
 /*
 .app {
