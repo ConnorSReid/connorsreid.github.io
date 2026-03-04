@@ -77,10 +77,10 @@ body {
 
 /* Main site content */
 .accordion-block {
-    width: min(1100px, 100%);
     display: flex;
     justify-content: center;
     height: 400px;
+    aspect-ratio: 2;
     gap: 16px;
     padding: 0;
     margin: 0;
@@ -99,6 +99,7 @@ body {
 
 .accordion-block li img {
     position: absolute;
+    z-index: 1;
     inset: 0;
     top: 50%;
     left: 50%;
@@ -130,13 +131,13 @@ body {
 .accordion-block li .block-content {
     position: absolute;
     inset: 0;
-    z-index: 1;
+    z-index: 2;
     color: #fff;
     padding: 16px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), 10%, rgba(255, 255, 255, 0), 100%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(255, 255, 255, 0));
     opacity: 0;
     visibility: hidden;
     transition: 0.3s;
