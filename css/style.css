@@ -71,6 +71,7 @@ body {
     width: 100%;
     justify-content: center;
     min-height: 88px;
+    color: #dde3ef;
 }
 
 /* Main site content */
@@ -120,7 +121,9 @@ body {
     line-height: 48px;
     border-bottom: 2px solid #fff;
     margin-bottom: 12px;
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.2;
 }
 
 .accordion-block li .block-content {
@@ -181,4 +184,5 @@ body {
 .footer-content {
     text-align: center;
     font-size: 18px;
+    color: #dde3ef;
 }
