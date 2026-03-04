@@ -75,23 +75,9 @@ body {
     font-family: var(--font-mono);
 }
 
-.home-page {
-    height: 100svh;
-    display: grid;
-
-    grid-template-rows: 
-        minmax(var(--header-min-height), auto)
-        minmax(var(--nav-min-height), auto)
-        1fr
-        minmax(var(--footer-min-height), auto);
-    
-    gap: var(--blank-margins);
-    padding: var(--page-margins);
-}
-
 /* Top of the site styling sans text */
 .site-header {
-    max-width: var(--panel-content-max);
+    max-width: 1100px;
     margin: 0 auto;
 }
 
@@ -124,8 +110,8 @@ body {
     top: 50%;
     left: 50%;
     translate: -50% -50%;
-    width: 100%;
-    height: 100%;
+    width: 50%;
+    height: 50%;
     object-fit: cover;
     filter: grayscale(0.5);
 }
