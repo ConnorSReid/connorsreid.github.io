@@ -9,7 +9,7 @@
 
     /* page colors */
     --background: #0f1113;
-    --foregroung: #dde3ef;
+    --foreground: #dde3ef;
     --accent: #182c8a;
 
     /* page layout */
@@ -22,9 +22,9 @@
 
     /* overlays */
     --panel-background: rgba(11, 13, 18, 0.8);
-    --panel-boarder: rgba(28, 40, 63, 0.12);
+    --panel-border: rgba(28, 40, 63, 0.12);
 
-    --panel-padding: clamp(12px 2.5vw 24px);
+    --panel-padding: clamp(12px, 2.5vw, 24px);
     --panel-thickness: 3px;
     --panel-corner: 28px;
 
@@ -35,22 +35,6 @@
     --nav-rem: 4rem;
     --x-margin: clamp(1rem, 4vw, 3rem);
     --y-margin: clamp(2rem, 8vh, 6rem);
-
-    /* ASCII field - background animation reference */
-    --cell-size: 14px;
-    --opacity: 0.85;
-    --blank-margins: 200px; /* buffer space around revealed page content */
-
-    /* animated page motion */
-    --transition-fast: 180ms;
-    --transition-standard: 420ms;
-    --transition-slow: 840ms;
-    --easing-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
-    --easing-emphasis: cubic-bezier(0.1, 0.9, 0.2, 1);
-
-    /* element effects */
-    --radius: 18px;
-    --shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
 *,
@@ -66,13 +50,14 @@ body {
 
 body {
     min-height: 100vh;
+    margin: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background: var(--background);
+    background: #0f1113;
     text-align: center;
-    font-family: var(--font-mono);
+    padding: 2rem;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 /* Top of the site styling sans text */
@@ -83,35 +68,41 @@ body {
 
 /* Header text styling */
 .header-content {
-
+    width: 100%;
+    justify-content: center;
+    min-height: 88px;
 }
 
 /* Main site content */
 .accordion-block {
-    width: 100%;
+    width: min(1100px, 100%);
     display: flex;
     justify-content: center;
     height: 400px;
     gap: 16px;
-    transition: 0.3s;
+    padding: 0;
+    margin: 0;
+    list-style: none;
 }
 
 .accordion-block li {
     position: relative;
     overflow: hidden;
-    flex: 0 0 80px;
-    border-radius: 48px;
+    flex: 1 1 0;
+    border-radius: 28px;
     opacity: 0.75;
     cursor: pointer;
+    transition: flex 0.3s, opacity 0.3s, transform 0.3s;
 }
 
 .accordion-block li img {
     position: absolute;
+    inset: 0;
     top: 50%;
     left: 50%;
     translate: -50% -50%;
-    width: 50%;
-    height: 50%;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     filter: grayscale(0.5);
 }
@@ -134,16 +125,17 @@ body {
 
 .accordion-block li .block-content {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    inset: 0;
     z-index: 1;
     color: #fff;
-    padding: 12px;
-    background: linear-gradient(0deg, rgb(0, 0, 0, 0.7), 10%, rgb(255, 255, 255, 0), 100%);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), 10%, rgba(255, 255, 255, 0), 100%);
     opacity: 0;
     visibility: hidden;
+    transition: 0.3s;
 }
 
 .accordion-block:hover {
@@ -162,8 +154,8 @@ body {
 }
 
 .accordion-block li:hover {
-    flex: 0 1 260px;
-    scale: 1.1;
+    flex: 4 1 0;
+    transform: scale(1.1);
     z-index: 10;
     opacity: 1;
 }
@@ -181,12 +173,12 @@ body {
 
 /* Bottom of the site styling sans text */
 .site-footer {
-    position: absolute;
-    justify-content: center;
+    position: static;
+    margin-top: auto;
 }
 
 /* Content for the footer */
 .footer-content {
     text-align: center;
-    font-size: 50px;
+    font-size: 18px;
 }
