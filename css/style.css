@@ -58,6 +58,7 @@ body {
     text-align: center;
     padding: 2rem;
     font-family: 'Courier New', Courier, monospace;
+    color: #dde3ef;
 }
 
 /* Top of the site styling sans text */
@@ -185,4 +186,5 @@ body {
     text-align: center;
     font-size: 18px;
     color: #dde3ef;
+    
 }
