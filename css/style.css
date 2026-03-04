@@ -65,16 +65,14 @@ body {
 }
 
 body {
-    margin: 0;
-
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background: var(--background);
-    color: var(--foregroung);
-
-    font-family: var(--font-sans);
-    line-height: 1.5;
-    text-rendering: optimizeLegibility;
-
-    overflow-x: hidden;
+    text-align: center;
+    font-family: var(--font-mono);
 }
 
 .home-page {
@@ -91,49 +89,118 @@ body {
     padding: var(--page-margins);
 }
 
-.blocks-inner {
+/* Top of the site styling sans text */
+.site-header {
     max-width: var(--panel-content-max);
     margin: 0 auto;
 }
 
-.main-inner {
-    height: 100%
+/* Header text styling */
+.header-content {
+
 }
 
-.frame {
-    background: 
-        linear-gradient(var(--panel-background), var(--panel-background)) left top / var(--panel-thickness) var(--panel-corner) no-repeat,
-        linear-gradient(var(--panel-background), var(--panel-background)) left top / var(--panel-corner) var(--panel-thickness) no-repeat,
-
-        linear-gradient(var(--panel-background), var(--panel-background)) right top / var(--panel-thickness) var(--panel-corner) no-repeat,
-        linear-gradient(var(--panel-background), var(--panel-background)) right top / var(--panel-corner) var(--panel-thickness) no-repeat,
-
-        linear-gradient(var(--panel-background), var(--panel-background)) left bottom / var(--panel-thickness) var(--panel-corner) no-repeat,
-        linear-gradient(var(--panel-background), var(--panel-background)) left bottom / var(--panel-corner) var(--panel-thickness) no-repeat,
-
-        linear-gradient(var(--panel-background), var(--panel-background)) right bottom / var(--panel-thickness) var(--panel-corner) no-repeat,
-        linear-gradient(var(--panel-background), var(--panel-background)) right bottom / var(--panel-corner) var(--panel-thickness) no-repeat,
-
-        linear-gradient(var(--background), var(--background));
-
-    padding: var(--panel-padding);
+/* Main site content */
+.accordion-block {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: 400px;
+    gap: 16px;
+    transition: 0.3s;
 }
-/*
-.app {
+
+.accordion-block li {
     position: relative;
-    isolation: isolate;
+    overflow: hidden;
+    flex: 0 0 80px;
+    border-radius: 48px;
+    opacity: 0.75;
+    cursor: pointer;
 }
 
-.ascii-layer {
-    position: fixed;
-    z-index: 0;
+.accordion-block li img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(0.5);
 }
 
-.content-layer {
-    position: relative;
+.accordion-block li,
+.accordion-block li img,
+.accordion-block li .block-content,
+.accordion-block li .block-content span {
+    transition: 0.3s;
+}
+
+.accordion-block h2 {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 48px;
+    border-bottom: 2px solid #fff;
+    margin-bottom: 12px;
+    white-space: nowrap;
+}
+
+.accordion-block li .block-content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     z-index: 1;
-}*/
-header {
+    color: #fff;
+    padding: 12px;
+    background: linear-gradient(0deg, rgb(0, 0, 0, 0.7), 10%, rgb(255, 255, 255, 0), 100%);
+    opacity: 0;
+    visibility: hidden;
+}
+
+.accordion-block:hover {
+    gap: 0;
+}
+
+.accordion-block li .block-content span {
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    bottom: 48px;
+    translate: -50%;
+    scale: 0.85;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.accordion-block li:hover {
+    flex: 0 1 260px;
+    scale: 1.1;
+    z-index: 10;
+    opacity: 1;
+}
+
+.accordion-block li:hover .block-content {
+    opacity: 1;
+    visibility: visible;
+}
+
+.accordion-block li:hover span {
+    scale: 1;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Bottom of the site styling sans text */
+.site-footer {
+    position: absolute;
+    justify-content: center;
+}
+
+/* Content for the footer */
+.footer-content {
     text-align: center;
     font-size: 50px;
 }
