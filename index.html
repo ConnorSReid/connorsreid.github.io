@@ -23,49 +23,89 @@
         <main>
             <ul class="accordion-block">
                 <li class="about">
-                    <img src="/Images/1000013532.jpg" />
-                    <div class="block-content">
-                        <span>
-                            <h2>About Me</h2>
-                        </span>
-                    </div>
+                    <button class="open-content" type="button" data-key="about" data-title="About Me">
+                        <img src="/Images/1000013532.jpg" />
+                        <div class="block-content">
+                            <span>
+                                <h2>About Me</h2>
+                            </span>
+                        </div>
+                    </button>
                 </li>
                 <li class="statement">
-                    <img src="/Images/20250920_160553.jpg" />
-                    <div class="block-content">
-                        <span>
-                            <h2>Personal Statement</h2>
-                        </span>
-                    </div>
+                    <button class="open-content" type="button" data-key="statement" data-title="Personal Statement">
+                        <img src="/Images/20250920_160553.jpg" />
+                        <div class="block-content">
+                            <span>
+                                <h2>Personal Statement</h2>
+                            </span>
+                        </div>
+                    </button>
                 </li>
                 <li class="projects">
-                    <img src="/Images/20251203_191213(1).jpg" />
-                    <div class="block-content">
-                        <span>
-                            <h2>Projects/Initiatives</h2>
-                        </span>
-                    </div>
+                    <button class="open-content" type="button" data-key="projects" data-title="Projects/Initiatives">
+                        <img src="/Images/20251203_191213(1).jpg" />
+                        <div class="block-content">
+                            <span>
+                                <h2>Projects/Initiatives</h2>
+                            </span>
+                        </div>
+                    </button>
                 </li>
-                <li class="resumé">
-                    <img src="/Images/20251029_202450.jpg" />
-                    <div class="block-content">
-                        <span>
-                            <h2>Resumé</h2>
-                        </span>
-                    </div>
+                <li class="resume">
+                    <button class="open-content" type="button" data-key="resume" data-title="Resumé">
+                        <img src="/Images/20251029_202450.jpg" />
+                        <div class="block-content">
+                            <span>
+                                <h2>Resumé</h2>
+                            </span>
+                        </div>
+                    </button>
                 </li>
             </ul>
+
+            <!--Accordion block content revealed at click-->
+            <div id="accordion-content" hidden>
+                <section data-key="about">
+                    <h1>About Me</h1>
+                </section>
+
+                <section data-key="statement" hidden>
+                    <h1>Personal Statement</h1>
+                </section>
+
+                <section data-key="projects" hidden>
+                    <h1>Projects/Intiatives</h1>
+                </section>
+
+                <section data-key="resume" hidden>
+                    <h1>Resumé</h1>
+                </section>
+            </div>
         </main>
         
         <!--Contact Information-->
         <footer class="site-footer">
             <div class="footer-block">
                 <div class="footer-content">
-                    <p>Contact Information</p>
                     <span>[email] | [phone #] | [LinkedIn] | [GitHub]</span>
                 </div>
             </div>
         </footer>
+    </div>
+
+    <!--Expanded content from the accordion-->
+    <div id="panelOverlay" class="panel-overlay" aria-hidden="true">
+        <div class="panel-overlay-card" role="dialog" aria-modal="true" aria-labelledby="overlayTitle">
+            <button class="panel-overlay-close" type="button" aria-label="Close">×</button>
+
+            <div class="panel-overlay-content">
+                <h1 id="overlayTitle" class="panel-overlay-title"></h1>
+                <div class="panel-overlay-body">
+                    <p>[content]</p>
+                </div>
+            </div>
+        </div>
     </div>
 </body>   
 </html>
