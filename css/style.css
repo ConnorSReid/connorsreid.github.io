@@ -168,6 +168,11 @@ body {
     background: rgba(0, 0, 0, 0.7);
 }
 
+.panel-overlay-content h1 {
+    color: #0f1113;
+    font-size: calc(100vw - (2rem * 2) - 40px);
+}
+
 .panel-overlay.open .panel-overlay-card {
     top: 2rem;
     bottom: 2rem;
@@ -231,7 +236,7 @@ body {
   background: rgba(255,255,255,1);
 }
 
-.panel-overlay__close:focus-visible{
+.panel-overlay-close:focus-visible{
   outline: 3px solid rgba(0,0,0,0.35);
   outline-offset: 2px;
 }
