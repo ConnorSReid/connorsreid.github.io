@@ -209,11 +209,11 @@ body {
         border-radius 350ms ease;
 }
 
-.panel-open .panel-block {
+.panel.open .panel-block {
     top: var(--page-frame);
     left: var(--page-frame);
     width: calc(100% - (var(--page-frame) * 2));
-    height: calc(100% - (var(--page-frame) * 2)); /* used 100vw & 100vh on online */
+    height: calc(100% - (var(--page-frame) * 2));
 }
 
 .panel-block::before {

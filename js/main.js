@@ -18,12 +18,12 @@ function setStartRectFrom(el) {
   panel.style.setProperty("--start-height", `${r.height}px`);
 }
 
-function openOverlayFrom(btn) {
+function openPanelFrom(btn) {
   activeBtn = btn;
 
   // Capture the clicked panel's rectangle (includes hover transform if active)
   const anchor = btn.closest("li") || btn;
-  setStartRectFrom(btn);
+  setStartRectFrom(anchor);
 
   // Title
   const title = btn.dataset.title || btn.querySelector("h2")?.textContent || "";
@@ -48,7 +48,7 @@ function openOverlayFrom(btn) {
   });
 }
 
-function closeOverlay() {
+function closePanel() {
   if (!activeBtn) return;
 
   const anchor = activeBtn.closest("li") || activeBtn;
@@ -86,12 +86,12 @@ closeBtn.addEventListener("click", closePanel);
 
 // Click outside card closes
 panel.addEventListener("click", (e) => {
-  if (e.target === panell) closePanel();
+  if (e.target === panel) closePanel();
 });
 
 // ESC closes
 window.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && panell.classList.contains("open")) closePanel();
+  if (e.key === "Escape" && panel.classList.contains("open")) closePanel();
 });
 
 // If window resizes while open, close (keeps animation consistent)
