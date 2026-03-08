@@ -78,7 +78,7 @@ function closePanel() {
 
 // Hook up buttons
 document.querySelectorAll(".open-accordion-block").forEach((btn) => {
-  btn.addEventListener("click", () => openOverlayFrom(btn));
+  btn.addEventListener("click", () => openPanelFrom(btn));
 });
 
 // Close controls
