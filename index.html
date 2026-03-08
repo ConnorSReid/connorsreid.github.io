@@ -8,11 +8,11 @@
     <title>Connor Reid | Portfolio</title>
 </head>
 <body>
-    <div class="home-page">
+    <div class="home">
         <!--Heading-->
-        <header class="site-header">
+        <header class="header">
             <div class="header-block">
-                <div class="header-content">
+                <div class="header-block-content">
                     <h1 class="title">Connor Reid's Portfolio</h1>
                     <p>Electrical Engineer | Cal Poly, SLO student</p>
                 </div>
@@ -20,12 +20,12 @@
         </header>
 
         <!--Accordion Block of Website Content-->
-        <main>
+        <main class="accordion">
             <ul class="accordion-block">
                 <li class="about">
-                    <button class="open-content" type="button" data-key="about" data-title="About Me">
-                        <img src="/Images/1000013532.jpg" />
-                        <div class="block-content">
+                    <button class="open-accordion-block" type="button" data-key="about" data-title="About Me">
+                        <img src="/Images/1000013532.jpg" alt="About Me Picture" />
+                        <div class="accordion-block-content">
                             <span>
                                 <h2>About Me</h2>
                             </span>
@@ -33,9 +33,9 @@
                     </button>
                 </li>
                 <li class="statement">
-                    <button class="open-content" type="button" data-key="statement" data-title="Personal Statement">
-                        <img src="/Images/20250920_160553.jpg" />
-                        <div class="block-content">
+                    <button class="open-accordion-block" type="button" data-key="statement" data-title="Personal Statement">
+                        <img src="/Images/20250920_160553.jpg" alt="Persoanl Statement Picture" />
+                        <div class="accordion-block-content">
                             <span>
                                 <h2>Personal Statement</h2>
                             </span>
@@ -43,9 +43,9 @@
                     </button>
                 </li>
                 <li class="projects">
-                    <button class="open-content" type="button" data-key="projects" data-title="Projects/Initiatives">
-                        <img src="/Images/20251203_191213(1).jpg" />
-                        <div class="block-content">
+                    <button class="open-accordion-block" type="button" data-key="projects" data-title="Projects/Initiatives">
+                        <img src="/Images/20251203_191213(1).jpg" alt="Projects and Initiatives Picture" />
+                        <div class="accordion-block-content">
                             <span>
                                 <h2>Projects/Initiatives</h2>
                             </span>
@@ -53,9 +53,9 @@
                     </button>
                 </li>
                 <li class="resume">
-                    <button class="open-content" type="button" data-key="resume" data-title="Resumé">
-                        <img src="/Images/20251029_202450.jpg" />
-                        <div class="block-content">
+                    <button class="open-accordion-block" type="button" data-key="resume" data-title="Resumé">
+                        <img src="/Images/20251029_202450.jpg" alt="Resume Picture" />
+                        <div class="accordion-block-content">
                             <span>
                                 <h2>Resumé</h2>
                             </span>
@@ -65,9 +65,35 @@
             </ul>
 
             <!--Accordion block content revealed at click-->
-            <div id="accordion-content" hidden>
+            <div id="panelContent" hidden>
                 <section data-key="about">
-                    <h1>About Me</h1>
+                    <div class="panel-block-content">
+                        <div class="panel-block-content-title">
+                            <h1>About Me</h1>
+                        </div>
+                        <div class="panel-block-content-body">
+                            <div class="panel-block-content-body-grid">
+                                <div class="panel-block-content-body-bio">
+                                    <p>[about me bio]</p>
+                                    <ul>
+                                        <li>[...]</li>
+                                        <li>[...]</li>
+                                    </ul>
+                                </div>
+
+                                <div class="panel-block-content-body-media">
+                                    <p>[picture]</p>
+                                </div>
+                            </div>
+
+                            <hr />
+
+                            <h2>Experience</h2>
+                            <ul>
+                                <li>[...]</li>
+                            </ul>
+                        </div>
+                    </div>
                 </section>
 
                 <section data-key="statement" hidden>
@@ -85,27 +111,28 @@
         </main>
         
         <!--Contact Information-->
-        <footer class="site-footer">
+        <footer class="footer">
             <div class="footer-block">
-                <div class="footer-content">
+                <div class="footer-block-content">
                     <span>[email] | [phone #] | [LinkedIn] | [GitHub]</span>
                 </div>
             </div>
         </footer>
-    </div>
 
-    <!--Expanded content from the accordion-->
-    <div id="panelOverlay" class="panel-overlay" aria-hidden="true">
-        <div class="panel-overlay-card" role="dialog" aria-modal="true" aria-labelledby="overlayTitle">
-            <button class="panel-overlay-close" type="button" aria-label="Close">&times;</button>
+            <!--Expanded content from the accordion-->
+        <div id="panel" class="panel" aria-hidden="true">
+            <div class="panel-block" role="dialog" aria-modal="true" aria-labelledby="panelTitle">
+                <button class="close-panel-block" type="button" aria-label="Close">&times;</button>
 
-            <div class="panel-overlay-content">
-                <h1 id="overlayTitle" class="panel-overlay-title"></h1>
-                <div class="panel-overlay-body">
-                    <p>[content]</p>
+                <div class="panel-block-content">
+                    <h1 id="panelTitle" class="panel-block-content-title"></h1>
+                    <div class="panel-block-content-body">
+                        <p>[content]</p>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
 </body>   
 </html>

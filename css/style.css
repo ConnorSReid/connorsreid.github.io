@@ -1,3 +1,21 @@
+:root {
+    --page-frame: 2rem;
+    --rectangle-radius: 28px;
+
+    --main-page-background: #0f1113;
+    --main-page-text-color: #dde3ef;
+
+    --grid: 24px;
+    --grid-line: rgba(0, 0, 0, 0.06);
+    --grid-bold: rgba(0, 0, 0, 0.1);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     min-height: 100vh;
     margin: 0;
@@ -5,28 +23,29 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: #0f1113;
+    background: var(--main-page-background);
     text-align: center;
-    padding: 2rem;
+    padding: var(--page-frame);
     font-family: 'Courier New', Courier, monospace;
-    color: #dde3ef;
+    color: var(--main-page-text-color);
 }
 
 /* Top of the site styling sans text */
-.site-header {
+.header {
     max-width: 1100px;
     margin: 0 auto;
 }
 
 /* Header text styling */
-.header-content {
+.header-block-content {
     width: 100%;
+    font-size: 24px;
     justify-content: center;
     min-height: 88px;
-    color: #dde3ef;
+    color: var(--main-page-text-color);
 }
 
-.main {
+.accordion {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -37,7 +56,7 @@ body {
 .accordion-block {
     display: flex;
     height: calc(60vh - 50px);
-    width: calc(80vw);
+    width: min(1100px, 80vw);
     gap: 16px;
     padding: 0;
     margin: 0;
@@ -49,7 +68,7 @@ body {
     overflow: hidden;
     flex: 1 1 0;
     min-width: 0;
-    border-radius: 28px;
+    border-radius: var(--rectangle-radius);
     opacity: 0.75;
     cursor: pointer;
     transition: flex 0.3s, opacity 0.3s, transform 0.3s;
@@ -62,13 +81,13 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(0.5);
+    filter: grayscale(0.4);
 }
 
-.accordion-block li,
-.accordion-block li img,
-.accordion-block li .block-content,
-.accordion-block li .block-content span {
+.accordion li,
+.accordion li img,
+.accordion li .accordion-block-content,
+.accordion li .accordion-block-content span {
     transition: 0.3s;
 }
 
@@ -83,7 +102,7 @@ body {
     line-height: 1.2;
 }
 
-.accordion-block li .block-content {
+.accordion-block li .accordion-block-content {
     position: absolute;
     inset: 0;
     z-index: 2;
@@ -102,7 +121,7 @@ body {
     gap: 0;
 }
 
-.accordion-block li .block-content span {
+.accordion-block li .accordion-block-content span {
     position: absolute;
     z-index: 3;
     left: 50%;
@@ -111,6 +130,7 @@ body {
     scale: 0.85;
     visibility: hidden;
     opacity: 0;
+    transition: 0.3s;
 }
 
 .accordion-block li:hover {
@@ -120,7 +140,7 @@ body {
     opacity: 1;
 }
 
-.accordion-block li:hover .block-content {
+.accordion-block li:hover .accordion-block-content {
     opacity: 1;
     visibility: visible;
 }
@@ -131,80 +151,96 @@ body {
     visibility: visible;
 }
 
-.accordion-content {
+.accordion-block-content {
     visibility: hidden;
     z-index: 5;
 }
 
 /* Bottom of the site styling sans text */
-.site-footer {
+.footer {
     position: static;
     margin-top: 32px;
 }
 
 /* Content for the footer */
-.footer-content {
+.footer-block-content {
     text-align: center;
     font-size: 18px;
-    color: #dde3ef;
+    color: var(--main-page-text-color);
 }
 
 /* Panels & Content for after clicking on an accordion panel */
-.panel-overlay {
+.panel {
     position: fixed;
     inset: 0;
     z-index: 100;
     display: none;
-
     background: rgba(0, 0, 0, 0);
     transition: background 300ms ease;
 }
 
-.panel-overlay.is-visible {
+.panel.is-visible {
     display: block;
 }
 
-.panel-overlay.open {
+.panel.open {
     background: rgba(0, 0, 0, 0.7);
 }
 
-.panel-overlay-content h1 {
-    color: #0f1113;
-    font-size: calc(100vw - (2rem * 2) - 40px);
-}
-
-.panel-overlay.open .panel-overlay-card {
-    top: 2rem;
-    bottom: 2rem;
-    right: 2rem;
-    left: 2rem;
-    width: calc(100vw - (2rem * 2));
-    height: calc(100vh - (2rem * 2));
-    border-radius: 28px;
-}
-
-.panel-overlay-card {
+.panel-block {
     position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100vw;
-    height: 100vh;
-    border-radius: 28px;
+    top: var(--start-top, 0px);
+    left: var(--start-left, 0px);
+    width: var(--start-width, 100%);
+    height: var(--start-height, 100%);
+
+    border-radius: var(--rectangle-radius);
     overflow: hidden;
-    background: #dde3ef;
+    background: var(--main-page-text-color);
     box-shadow: 0 18px 64px rgba(0, 0, 0, 0.8);
 
-    transition:
+    isolation: isolate;
+
+    transition: 
         top 350ms ease,
-        bottom 350ms ease,
+        left 350ms ease,
         width 350ms ease,
         height 350ms ease,
         border-radius 350ms ease;
 }
 
-.panel-overlay-close {
+.panel-open .panel-block {
+    top: var(--page-frame);
+    left: var(--page-frame);
+    width: calc(100% - (var(--page-frame) * 2));
+    height: calc(100% - (var(--page-frame) * 2)); /* used 100vw & 100vh on online */
+}
+
+.panel-block::before {
+    content: "";
     position: absolute;
-    z-index: 15;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+
+    background-image: 
+        linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(to right, var(--grid-bold) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--grid-bold) 1px, transparent 1px);
+    
+    background-size: 
+        var(--grid) var(--grid),
+        var(--grid) var(--grid),
+        calc(var(--grid) * 5) calc(var(--grid) * 5),
+        calc(var(--grid) * 5) calc(var(--grid) * 5);
+
+        opacity: 0.7;
+}
+
+.close-panel-block {
+    position: absolute;
+    z-index: 2;
 
     /* keep it inside rounded corners and safe areas */
     top: max(12px, env(safe-area-inset-top));
@@ -232,16 +268,109 @@ body {
     transition: opacity 200ms ease 150ms, transform 200ms ease 150ms;
 }
 
-.panel-overlay-close:hover{
+.close-panel-block:focus-visible {
+    outline: 3px solid rgba(0, 0, 0, 0.35);
+    outline-offset: 2px;
+}
+
+.panel-block-content {
+    position: relative;
+    z-index: 1;
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    padding: calc(var(--grid) * 2);
+    line-height: var(--grid);
+    font-size: 16px;
+    color: var(--main-page-background);
+    text-align: left;
+}
+
+.panel-block-content-title {
+    text-align: center;
+    margin: 0 0 var(--grid) 0;
+    line-height: calc(var(--grid) * 2);
+    color: var(--main-page-background);
+    font-size: clamp(32px, 6vw, 64px);
+}
+
+.panel-block-content-body {
+    flex: 1 1 auto;
+    overflow: auto;
+    padding-right: 8px;
+}
+
+.panel-block-content-body hr {
+    border: 0;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+    margin: calc(var(--grid) * 2) 0;
+}
+
+.panel-block-content-body h2 {
+    margin: 0 0 var(--grid) 0;
+    line-height: calc(var(--grid) * 2) 0;
+}
+
+.panel-block-content-body ul {
+    margin: 0 0 var(--grid) 0;
+    padding-left: 1.2rem;
+}
+
+.panel-block-content-body-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: calc(var(--grid) * 2);
+    align-items: start;
+}
+
+.panel-block-content-body-media {
+    min-height: calc(var(--grid) * 6);
+    border-radius: 12px;
+    background: rgba(90, 60, 140, 0.25);
+    padding: var(--grid);
+}
+
+@media (max-width 700px) {
+    .accordion {padding: 24px;}
+    .accordion-block {width: 100%; height: 42vh; gap: 10px;}
+    .accordion-block li:hover {transform: none;}
+    .panel-block-content-body-grid {grid-template-columns: 1fr;}
+}
+
+
+
+/*.panel-block-content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 28px;
+    overflow: hidden;
+    background: #dde3ef;
+    box-shadow: 0 18px 64px rgba(0, 0, 0, 0.8);
+
+    transition:
+        top 350ms ease,
+        bottom 350ms ease,
+        width 350ms ease,
+        height 350ms ease,
+        border-radius 350ms ease;
+}
+
+.close-panel-block:hover{
   background: rgba(255,255,255,1);
 }
 
-.panel-overlay-close:focus-visible{
+.close-panel-block:focus-visible{
   outline: 3px solid rgba(0,0,0,0.35);
   outline-offset: 2px;
 }
 
-.panel-overlay.open .panel-overlay-content {
+.panel-block.open .panel-block-content {
     opacity: 1;
     transform: none;
-}
+}*/

@@ -1,10 +1,10 @@
 console.log("JS is working");
 
-const overlay = document.getElementById("panelOverlay");
-const card = overlay.querySelector(".panel-overlay-card");
-const titleEl = overlay.querySelector(".panel-overlay-title");
-const bodyEl = overlay.querySelector(".panel-overlay-body");
-const closeBtn = overlay.querySelector(".panel-overlay-close");
+const panel = document.getElementById("panel");
+const card = panel.querySelector(".panel-block");
+const titleEl = panel.querySelector(".panel-block-content-title");
+const bodyEl = panel.querySelector(".panel-block-content-body");
+const closeBtn = panel.querySelector(".close-panel-block");
 
 const contentRoot = document.getElementById("panelContent");
 
@@ -12,20 +12,21 @@ let activeBtn = null;
 
 function setStartRectFrom(el) {
   const r = el.getBoundingClientRect();
-  overlay.style.setProperty("--start-top", `${r.top}px`);
-  overlay.style.setProperty("--start-left", `${r.left}px`);
-  overlay.style.setProperty("--start-width", `${r.width}px`);
-  overlay.style.setProperty("--start-height", `${r.height}px`);
+  panel.style.setProperty("--start-top", `${r.top}px`);
+  panel.style.setProperty("--start-left", `${r.left}px`);
+  panel.style.setProperty("--start-width", `${r.width}px`);
+  panel.style.setProperty("--start-height", `${r.height}px`);
 }
 
 function openOverlayFrom(btn) {
   activeBtn = btn;
 
   // Capture the clicked panel's rectangle (includes hover transform if active)
+  const anchor = btn.closest("li") || btn;
   setStartRectFrom(btn);
 
   // Title
-  const title = btn.dataset.title || btn.querySelector("h1")?.textContent || "";
+  const title = btn.dataset.title || btn.querySelector("h2")?.textContent || "";
   titleEl.textContent = title;
 
   // Body content from hidden sections
@@ -33,14 +34,16 @@ function openOverlayFrom(btn) {
   const section = contentRoot?.querySelector(`[data-key="${key}"]`);
   bodyEl.innerHTML = section ? section.innerHTML : "<p>[content]</p>";
 
-  // Show overlay
-  overlay.classList.add("is-visible");
-  overlay.setAttribute("aria-hidden", "false");
+  // Show panel
+  panel.classList.add("is-visible");
+  panel.setAttribute("aria-hidden", "false");
   document.body.style.overflow = "hidden";
+
+  bodyEl.scrollTop = 0;
 
   // Animate to fullscreen on next frame
   requestAnimationFrame(() => {
-    overlay.classList.add("open");
+    panel.classList.add("open");
     closeBtn.focus();
   });
 }
@@ -48,16 +51,20 @@ function openOverlayFrom(btn) {
 function closeOverlay() {
   if (!activeBtn) return;
 
+  const anchor = activeBtn.closest("li") || activeBtn;
+
   // Animate back to the original panel rect
-  setStartRectFrom(activeBtn);
-  overlay.classList.remove("open");
+  setStartRectFrom(anchor);
+  panel.classList.remove("open");
 
   const onDone = (e) => {
     if (e.target !== card) return;
 
-    overlay.classList.remove("is-visible");
-    overlay.setAttribute("aria-hidden", "true");
+    panel.classList.remove("is-visible");
+    panel.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
+
+    bodyEl.innerHTML = "";
 
     // return focus to the button (keyboard-friendly)
     activeBtn.focus();
@@ -70,24 +77,24 @@ function closeOverlay() {
 }
 
 // Hook up buttons
-document.querySelectorAll(".open-content").forEach((btn) => {
+document.querySelectorAll(".open-accordion-block").forEach((btn) => {
   btn.addEventListener("click", () => openOverlayFrom(btn));
 });
 
 // Close controls
-closeBtn.addEventListener("click", closeOverlay);
+closeBtn.addEventListener("click", closePanel);
 
 // Click outside card closes
-overlay.addEventListener("click", (e) => {
-  if (e.target === overlay) closeOverlay();
+panel;.addEventListener("click", (e) => {
+  if (e.target === panell) closePanel();
 });
 
 // ESC closes
 window.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && overlay.classList.contains("open")) closeOverlay();
+  if (e.key === "Escape" && panell.classList.contains("open")) closePanel();
 });
 
 // If window resizes while open, close (keeps animation consistent)
 window.addEventListener("resize", () => {
-  if (overlay.classList.contains("open")) closeOverlay();
+  if (panel.classList.contains("open")) closePanel();
 });
