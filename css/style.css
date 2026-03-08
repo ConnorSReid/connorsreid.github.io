@@ -339,38 +339,3 @@ body {
     .accordion-block li:hover {transform: none;}
     .panel-block-content-body-grid {grid-template-columns: 1fr;}
 }
-
-
-
-/*.panel-block-content {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100vw;
-    height: 100vh;
-    border-radius: 28px;
-    overflow: hidden;
-    background: #dde3ef;
-    box-shadow: 0 18px 64px rgba(0, 0, 0, 0.8);
-
-    transition:
-        top 350ms ease,
-        bottom 350ms ease,
-        width 350ms ease,
-        height 350ms ease,
-        border-radius 350ms ease;
-}
-
-.close-panel-block:hover{
-  background: rgba(255,255,255,1);
-}
-
-.close-panel-block:focus-visible{
-  outline: 3px solid rgba(0,0,0,0.35);
-  outline-offset: 2px;
-}
-
-.panel-block.open .panel-block-content {
-    opacity: 1;
-    transform: none;
-}*/
