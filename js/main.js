@@ -85,7 +85,7 @@ document.querySelectorAll(".open-accordion-block").forEach((btn) => {
 closeBtn.addEventListener("click", closePanel);
 
 // Click outside card closes
-panel;.addEventListener("click", (e) => {
+panel.addEventListener("click", (e) => {
   if (e.target === panell) closePanel();
 });
 
