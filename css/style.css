@@ -285,6 +285,7 @@ body {
     padding: calc(var(--grid) * 2);
     line-height: var(--grid);
     font-size: 16px;
+    font-weight: 500;
     color: var(--main-page-background);
     text-align: left;
 }
@@ -304,13 +305,13 @@ body {
 }
 
 .panel-block-content-body mark {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.35);
 }
 
 .panel-block-content-body hr {
     border: 0;
     height: 1px;
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.35);
     margin: calc(var(--grid) * 2) 0;
 }
 
