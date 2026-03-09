@@ -143,6 +143,7 @@ body {
 .accordion-block li:hover .accordion-block-content {
     opacity: 1;
     visibility: visible;
+    cursor: pointer;
 }
 
 .accordion-block li:hover span {
@@ -300,6 +301,10 @@ body {
     flex: 1 1 auto;
     overflow: auto;
     padding-right: 8px;
+}
+
+.panel-block-content-body mark {
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .panel-block-content-body hr {
