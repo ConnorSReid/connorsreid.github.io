@@ -6,6 +6,9 @@ const titleEl = panel.querySelector(".panel-block-content-title");
 const bodyEl = panel.querySelector(".panel-block-content-body");
 const closeBtn = panel.querySelector(".close-panel-block");
 
+const emailButton = document.querySelector('.copy-email');
+const emailAddress = 'connorreid9@Outlook.com';
+
 const contentRoot = document.getElementById("panelContent");
 
 let activeBtn = null;
@@ -99,3 +102,13 @@ window.addEventListener("keydown", (e) => {
 window.addEventListener("resize", () => {
   if (panel.classList.contains("open")) closePanel();
 });
+
+emailButton.addEventListener('click', async () => {
+  try {
+    await navigator.clipboard.writeText(emailAddress);
+    alert('Email copied to clipboard');
+  } catch (err) {
+    console.error('Clipboard copy failed:', err);
+    alert('Failed to copy email to clipboard');
+  }
+})

@@ -164,10 +164,45 @@ body {
 }
 
 /* Content for the footer */
-.footer-block-content {
-    text-align: center;
-    font-size: 18px;
-    color: var(--main-page-text-color);
+.footer-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: calc(var(--grid) * 2);
+    margin: 0;
+    padding: 0; 
+}
+
+.footer-links li {
+    margin: 0;
+    padding: 0;
+}
+
+.footer-buttons {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.footer-buttons img {
+    width: 32px;
+    height: 32px;
+    display: block;
+    object-fit: contain;
+}
+
+.footer-buttons:focus-visible {
+    outline: 2px, solid, var(--main-page-text-color);
+    outline-offset: 4px;
 }
 
 /* Panels & Content for after clicking on an accordion panel */
