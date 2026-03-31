@@ -325,10 +325,16 @@ body {
     padding-left: 1.2rem;
 }
 
-.panel-block-content-body-grid {
+#about .panel-block-content-body-grid {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     gap: calc(var(--grid) * 2);
+    align-items: start;
+}
+
+#statement .panel-block-content-body-grid {
+    display: block;
+    gap:calc(var(--grid) * 2);
     align-items: start;
 }
 
@@ -340,6 +346,10 @@ body {
     background: rgba(90, 60, 140, 0.25);
     aspect-ratio: 4 / 5;
     justify-self: end;
+}
+
+.panel-block-content-body-bio {
+    font-size: 20px;
 }
 
 .bio-image {
