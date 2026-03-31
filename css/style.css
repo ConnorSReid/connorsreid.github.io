@@ -334,8 +334,6 @@ body {
 
 #statement .panel-block-content-body-grid {
     display: block;
-    gap:calc(var(--grid) * 2);
-    align-items: start;
 }
 
 .panel-block-content-body-media {
