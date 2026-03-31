@@ -32,6 +32,7 @@ function openPanelFrom(btn) {
   // Body content from hidden sections
   const key = btn.dataset.key;
   const section = contentRoot?.querySelector(`[data-key="${key}"]`);
+  bodyEl.dataset.key = key;
   bodyEl.innerHTML = section ? section.innerHTML : "<p>[content]</p>";
 
   // Show panel
