@@ -371,6 +371,10 @@ body {
     display: block;
 }
 
+[data-key="resume"] .panel-block-content-body {
+    overflow: hidden;
+}
+
 .panel-block-content-body-media {
     min-height: calc(var(--grid) * 6);
     width: min(320px, 100%);
