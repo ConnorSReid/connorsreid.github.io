@@ -415,5 +415,15 @@ body {
     .accordion-block {flex-direction: column; width: 100%; height: auto; gap: 10px;}
     .accordion-block li {min-height: 120px;}
     .accordion-block li:hover {transform: none; flex: 1 1 auto;}
+    .panel-block-content {padding: 12px;}
     .panel-block-content-body-grid {grid-template-columns: 1fr;}
+
+    [data-key="about"] .panel-block-content-body-media {order: -1; width: min(260px, 100%); padding: 12px; margin: 0 auto;}
+    [data-key="about"] .panel-block-content-body-bio {order: 1;}
+
+    [data-key="about"] .panel-block-content-body-grid {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--grid) * 0.5);
+    }
 }
