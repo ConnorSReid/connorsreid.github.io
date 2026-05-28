@@ -157,6 +157,13 @@ body {
     z-index: 5;
 }
 
+.open-accordion-block {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
 /* Bottom of the site styling sans text */
 .footer {
     position: static;
@@ -399,7 +406,8 @@ body {
 
 @media (max-width: 700px) {
     .accordion {padding: 24px;}
-    .accordion-block {width: 100%; height: 42vh; gap: 10px;}
-    .accordion-block li:hover {transform: none;}
+    .accordion-block {flex-direction: column; width: 100%; height: auto; gap: 10px;}
+    .accordion-block li {min-height: 120px;}
+    .accordion-block li:hover {transform: none; flex: 1 1 auto;}
     .panel-block-content-body-grid {grid-template-columns: 1fr;}
 }
