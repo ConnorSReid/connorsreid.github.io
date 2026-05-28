@@ -162,6 +162,12 @@ body {
     width: 100%;
     height: 100%;
     position: relative;
+    padding: 0;
+    border: 0;
+    border-radius: inherit;
+    overflow: hidden;
+    background: transparent;
+    cursor: pointer;
 }
 
 /* Bottom of the site styling sans text */
