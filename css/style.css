@@ -45,6 +45,10 @@ body {
     color: var(--main-page-text-color);
 }
 
+.particles {
+    position: absolute;
+}
+
 .accordion {
     width: 100%;
     display: flex;
