@@ -1,4 +1,4 @@
-const canvas = document.querySelector("#particle");
+const canvas = document.querySelector("#particles");
 
 if (!canvas) {
   throw new Error(
