@@ -80,7 +80,7 @@ function resizeCanvas() {
   canvas.height = Math.round(height * pixelRatio);
 
   // Lets us continue to use normal CSS-pixel coordinates.
-  contextx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
+  context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
 
   Particles();
 }
