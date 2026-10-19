@@ -4,14 +4,14 @@ const panel = document.getElementById("panel");
 const card = panel.querySelector(".panel-block");
 const titleEl = panel.querySelector(".panel-block-content-title");
 const bodyEl = panel.querySelector(".panel-block-content-body");
-const closeBtn = panel.querySelector(".close-panel-block");
+const closeButton = panel.querySelector(".close-panel-block");
 
 const emailButton = document.querySelector('.copy-email');
 const emailAddress = 'connorreid9@Outlook.com';
 
 const contentRoot = document.getElementById("panelContent");
 
-let activeBtn = null;
+let activeButton = null;
 
 function setStartRectFrom(el) {
   const r = el.getBoundingClientRect();
@@ -21,19 +21,19 @@ function setStartRectFrom(el) {
   panel.style.setProperty("--start-height", `${r.height}px`);
 }
 
-function openPanelFrom(btn) {
-  activeBtn = btn;
+function openPanelFrom(button) {
+  activeButton = button;
 
   // Capture the clicked panel's rectangle (includes hover transform if active)
-  const anchor = btn.closest("li") || btn;
+  const anchor = button.closest("li") || button;
   setStartRectFrom(anchor);
 
   // Title
-  const title = btn.dataset.title || btn.querySelector("h2")?.textContent || "";
+  const title = button.dataset.title || button.querySelector("h2")?.textContent || "";
   titleEl.textContent = title;
 
   // Body content from hidden sections
-  const key = btn.dataset.key;
+  const key = button.dataset.key;
   const section = contentRoot?.querySelector(`[data-key="${key}"]`);
   bodyEl.dataset.key = key;
   bodyEl.innerHTML = section ? section.innerHTML : "<p>[content]</p>";
@@ -48,14 +48,14 @@ function openPanelFrom(btn) {
   // Animate to fullscreen on next frame
   requestAnimationFrame(() => {
     panel.classList.add("open");
-    closeBtn.focus();
+    closeButton.focus();
   });
 }
 
 function closePanel() {
-  if (!activeBtn) return;
+  if (!activeButton) return;
 
-  const anchor = activeBtn.closest("li") || activeBtn;
+  const anchor = activeButton.closest("li") || activeButton;
 
   // Animate back to the original panel rect
   setStartRectFrom(anchor);
@@ -71,8 +71,8 @@ function closePanel() {
     bodyEl.innerHTML = "";
 
     // return focus to the button (keyboard-friendly)
-    activeBtn.focus();
-    activeBtn = null;
+    activeButton.focus();
+    activeButton = null;
 
     card.removeEventListener("transitionend", onDone);
   };
@@ -81,12 +81,12 @@ function closePanel() {
 }
 
 // Hook up buttons
-document.querySelectorAll(".open-accordion-block").forEach((btn) => {
-  btn.addEventListener("click", () => openPanelFrom(btn));
+document.querySelectorAll(".open-accordion-block").forEach((button) => {
+  button.addEventListener("click", () => openPanelFrom(button));
 });
 
 // Close controls
-closeBtn.addEventListener("click", closePanel);
+closeButton.addEventListener("click", closePanel);
 
 // Click outside card closes
 panel.addEventListener("click", (e) => {

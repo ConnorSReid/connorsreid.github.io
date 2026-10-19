@@ -1,3 +1,5 @@
+// Credit to vincentgarreau.com/particles.js for the inspiration and structure of these particle designs
+
 const canvas = document.querySelector("#particles");
 
 if (!canvas) {
